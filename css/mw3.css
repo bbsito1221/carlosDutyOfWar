@@ -18,6 +18,7 @@
   --mw3-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   font-size: 62.5%;
 }
+
 *,
 *::before,
 *::after {
@@ -28,82 +29,90 @@ body {
   background-color: var(--cod-background);
   color: var(--cod-text);
   font-family: var(--font-cod-body), system-ui, sans-serif;
+
 }
-#menuToggle {
-  display: none;
+#menuToggle{
+    display: none;
 }
-.iconMenu {
-  color: var(--cod-secondary);
-  animation: girar 0.3s;
+.iconMenu{
+    color: var(--cod-secondary);  
+    animation: girar .3s;
+
 }
-.iconMenu2 {
-  color: var(--cod-secondary);
-  display: none;
-  animation: girar 0.3s;
+.iconMenu2{
+    color: var(--cod-secondary);
+    display: none;
+    animation: girar .3s  ;
 }
-header {
-  background-color: var(--cod-primary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  height: 6rem;
-  position: relative;
-  z-index: 1000;
+header{
+    
+    background-color: var(--cod-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 6rem;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    margin: 0;
+
+
+
 }
-.barraNavegacion {
-  position: relative;
-  z-index: 1001;
+
+header .barraNavegacion .menuHamburguesa{
+    position: relative;
+    z-index: 2;
+
+    
 }
-header .barraNavegacion .menuHamburguesa {
-  position: relative;
-  z-index: 1002;
+header .barraNavegacion .ul{
+    flex-direction: column;
+    position: absolute;
+    inset: 0;
+    background-color: var(--cod-primary);
+    z-index: 9;
+    display: none;
+    list-style: none;
+    height: calc(100vh - 6rem);
+    margin-top: 6rem;
+    justify-content: center;
+    padding: 0;
+
+
+
 }
-header .barraNavegacion .ul {
-  position: fixed;
-  top: 6rem;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 6rem);
-  background-color: var(--cod-primary);
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  gap: 1rem;
-  z-index: 1002;
+
+header > .barraNavegacion > .ul > .li{
+    text-align: center;
+    padding: 2rem;
+    transition: .3s;
 }
-header > .barraNavegacion > .ul > .li {
-  text-align: center;
-  padding: 2rem;
-  transition: 0.3s;
-  width: 100%;
+header .barraNavegacion .ul .li:hover{
+    background-color: var(--cod-background);
 }
-header .barraNavegacion .ul .li:hover {
-  background-color: var(--cod-background);
+header .barraNavegacion .ul .li .link{
+    text-decoration: none;
+    color: var(--cod-secondary);
+    font-size: 2rem;
+    font-family: var(--font-cod-title);
+    text-transform: uppercase;
+    transition:  .3s;
 }
-header .barraNavegacion .ul .li .link {
-  text-decoration: none;
-  color: var(--cod-secondary);
-  font-size: 2rem;
-  font-family: var(--font-cod-title);
-  text-transform: uppercase;
-  transition: 0.3s;
+header .barraNavegacion .ul .li .link:hover{
+    color: var(--cod-accent);
 }
-header .barraNavegacion .ul .li .link:hover {
-  color: var(--cod-accent);
+#menuToggle:checked ~ .ul{
+    display: flex;
 }
-#menuToggle:checked ~ .ul {
-  display: flex;
-  overflow-y: auto;
+#menuToggle:checked ~ .menuHamburguesa .iconMenu{
+    display: none;
+
 }
-#menuToggle:checked ~ .menuHamburguesa .iconMenu {
-  display: none;
-}
-#menuToggle:checked ~ .menuHamburguesa .iconMenu2 {
-  display: flex;
-  transform: rotate(360deg);
+#menuToggle:checked ~ .menuHamburguesa .iconMenu2{
+    display: flex;
+    transform: rotate(360deg);
 }
 @keyframes girar {
   from {
@@ -325,4 +334,32 @@ header .barraNavegacion .ul .li .link:hover {
   .mw3-module.has-video {
     background: var(--mw3-bg);
   }
+}
+@media(min-width:700px){
+    header .barraNavegacion .menuHamburguesa{
+        display: none;
+    }
+    header .barraNavegacion{
+        width: 100%;
+    }
+    header .barraNavegacion .ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: static;
+        align-items: center;
+        height: fit-content;
+        margin: 0;
+    }
+    header .barraNavegacion .ul .li{
+        padding: 1rem;
+       
+    }
+    header .barraNavegacion .ul .li .link{
+        font-size: 1.3rem;
+    }
+
+
+
+
 }
